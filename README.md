@@ -1,6 +1,6 @@
 # Text-Based CardJitsu
 
-This progran is based on Club Penguin's card game called "CardJitsu",
+This program is based on Club Penguin's card game called "CardJitsu",
 I've been trying to roughly recreate it as a text-based game in Java
 
 # Plans
