@@ -12,7 +12,7 @@ I've been trying to roughly recreate it as a text-based game in Java
 
 (3) Implement "power" cards that have certain features
 
-# Current Number of CardJitsu Cards
+# Current Number of *Implemented* CardJitsu Cards
 There are currently 41 of 509 cards useable
 
 # To-do list
