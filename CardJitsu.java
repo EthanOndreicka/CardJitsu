@@ -61,6 +61,8 @@ public class CardJitsu {
         System.out.println("1: CardJitsu VS CPU");
         System.out.println("2: CardJitsu VS Local Player");
         System.out.println("3: Options");
+        System.out.println("4: Game Rules");
+        System.out.println("5: Tournament Mode");
 
         int menuSelection = input.nextInt();
 
@@ -75,6 +77,9 @@ public class CardJitsu {
         }
         if (menuSelection == 4){
             gameRules();
+        }
+        if (menuSelection == 5){
+            tourny(allCards, player1Cards, cpuCards);
         }
 
 
@@ -630,6 +635,142 @@ public class CardJitsu {
 
     public static void Options(){
         System.out.println("Work in POGress");
+    }
+
+    public static boolean tourny(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards, ArrayList<CardJitsu> cpuCards){
+        Random rand = new Random();
+        String[] tournyNames = {"ABone", "Bair", "CRASH", "Archepelago", "T-Bro", "quinto", "Azoidy", "Stego100", "BlackArrow23", "Gxstav"};
+        String cpu1 = tournyNames[rand.nextInt(9)];
+        String cpu2 = tournyNames[rand.nextInt(9)];
+        String cpu3 = tournyNames[rand.nextInt(9)];
+        String cpu4 = tournyNames[rand.nextInt(9)];
+        String cpu5 = tournyNames[rand.nextInt(9)];
+        String cpu6 = tournyNames[rand.nextInt(9)];
+        String cpu7 = tournyNames[rand.nextInt(9)];
+        String[] cpuS = {cpu1, cpu2, cpu3, cpu4, cpu5, cpu6, cpu7};
+        String[] rounds = {"Elite 8", "Final 4", " * CHAMPIONSHIP *"};
+        int roundNum = 0;
+        int userWins = 0;
+        int cpuWins = 0;
+        boolean inRound = true;
+        int overallWins = 0;
+        String currentOpponent = cpuS[0];
+        System.out.println(" * * CardJitsu Championship * * ");
+        System.out.println("Round 1:");
+        System.out.println("You VS " + cpu1);
+        System.out.println(cpu2 + " VS " + cpu3);
+        System.out.println(cpu4 + " VS " + cpu5);
+        System.out.println(cpu6 + " VS " + cpu7);
+
+        while (inRound){
+            System.out.println("\n\n\nYou VS " + currentOpponent + ".... FIGHT");
+            while (userWins < 3 && cpuWins < 3){
+                // for loop to print user's cards
+                int cardNum = 0;
+                System.out.println("\nYour Cards: \n");
+                for (int q = 0; q < 4; q++){
+                    System.out.println("(" + (cardNum + 1) + ") " + player1Cards.get(cardNum).cardName + " || Type: " + player1Cards.get(cardNum).cardType 
+                    + " || Level: " + player1Cards.get(cardNum).cardLevel + " || Color: " + player1Cards.get(cardNum).cardColor + "\n");
+                    cardNum++;
+                }
+
+                System.out.println("Score: " + userWins + " - " + cpuWins);
+                System.out.println("Choose a card: ");
+                int cardSelection = input.nextInt() - 1;
+                int cpuCardSelection = 0;
+                for (int w = 0; w < 3; w++){
+                    if(cpuCards.get(w).getCardLevel() >= 9){
+                        cpuCardSelection = w;
+                    }
+                    else{
+                        cpuCardSelection = rand.nextInt(4);
+                    }
+                }
+
+                // used for testing and seeing cpu's cards
+                // System.out.println(player1Cards.get(cardSelection).getCardName());
+                //  System.out.println(cpuCards.get(0).getCardName());
+                // System.out.println(cpuCards.get(1).getCardName());
+                // System.out.println(cpuCards.get(2).getCardName());
+                // System.out.println(cpuCards.get(3).getCardName());
+
+                // prints user chosen card as well as cpu chosen card
+                System.out.println("==========================================\n");
+                System.out.println("Your Card: " + player1Cards.get(cardSelection).cardName + " || Type: " + player1Cards.get(cardSelection).cardType 
+                + " || Level: " + player1Cards.get(cardSelection).cardLevel + " || Color: " + player1Cards.get(cardSelection).cardColor + "\n");
+                System.out.println(currentOpponent + "'s Card: " + cpuCards.get(cpuCardSelection).getCardName() + " || Type: " + cpuCards.get(cpuCardSelection).cardType 
+                + " || Level: " + cpuCards.get(cpuCardSelection).cardLevel + " || Color: " + cpuCards.get(cpuCardSelection).cardColor + "\n");
+                System.out.println("==========================================");
+                
+                // if else statements to determine each winner of round
+                if (player1Cards.get(cardSelection).getCardType() == "Fire" && cpuCards.get(cpuCardSelection).getCardType() == "Water"){
+                    System.out.println("You Lost this Round!, Water beats Fire...");
+                    cpuWins++;
+                }
+                else if (player1Cards.get(cardSelection).getCardType() == "Water" && cpuCards.get(cpuCardSelection).getCardType() == "Snow"){
+                    System.out.println("You Lost this Round!, Snow beats Water...");
+                    cpuWins++;
+                }
+                else if (player1Cards.get(cardSelection).getCardType() == "Snow" && cpuCards.get(cpuCardSelection).getCardType() == "Fire"){
+                    System.out.println("You Lost this Round! Fire beats Snow...");
+                    cpuWins++;
+                }
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Fire" && player1Cards.get(cardSelection).getCardType() == "Water"){
+                    System.out.println("You Won this Round! Water beats Fire...");
+                    userWins++;
+                }
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Water" && player1Cards.get(cardSelection).getCardType() == "Snow"){
+                    System.out.println("You Won this Round! Snow beats Water...");
+                    userWins++;
+                }
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Snow" && player1Cards.get(cardSelection).getCardType() == "Fire"){
+                    System.out.println("You Won this Round! Fire beats Snow...");
+                    userWins++;
+                }
+                else{
+                    if(player1Cards.get(cardSelection).getCardLevel() > cpuCards.get(cpuCardSelection).getCardLevel()){
+                        System.out.println("You Won this Round! You had the higher level card!");
+                        userWins++;
+                    }
+                    else if(player1Cards.get(cardSelection).getCardLevel() == cpuCards.get(cpuCardSelection).getCardLevel()){
+                        System.out.println("You Tied this Round! Your cards were the same type & level");
+                    }
+                    else{
+                        System.out.println("You Lost this Round!, " + currentOpponent+ " had a higher level card");
+                        cpuWins++;
+                    }
+                    
+
+                }
+
+                // changes the card that was just used
+                player1Cards.set(cardSelection, allCards.get(rand.nextInt(numOfCards)));
+                cpuCards.set(cpuCardSelection, allCards.get(rand.nextInt(numOfCards)));
+
+            }
+            // tells who wons and final score as well as +/- xp
+            System.out.println("Final Score: User(" + userWins + ") - " + currentOpponent + "(" + cpuWins + ")");
+            if (overallWins >= 3){
+                System.out.println("YOU ARE THE CHAMPION!!!");
+                break;
+            }
+            if (userWins > cpuWins){
+                System.out.println("You Won! in the " + rounds[roundNum]);
+                overallWins++;
+                roundNum++;
+                currentOpponent = cpuS[0] + 2;
+                System.out.println("Moving Onto the " + rounds[roundNum]);
+                userWins = 0;
+                cpuWins = 0;
+                continue;
+            }
+            else{
+                System.out.println("You Lost!");
+                break;
+            }
+
+        }
+        return true;
     }
 }
 
