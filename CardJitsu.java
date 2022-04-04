@@ -48,6 +48,7 @@ public class CardJitsu {
 
     public static void main(String[] args) {
 
+        int menuSelection = 2022;
         ArrayList<CardJitsu> allCards = new ArrayList<CardJitsu>();
         ArrayList<CardJitsu> player1Cards = new ArrayList<CardJitsu>();
         ArrayList<CardJitsu> player2Cards = new ArrayList<CardJitsu>();
@@ -57,32 +58,37 @@ public class CardJitsu {
         player2Cards = initializeP2Cards(allCards, player2Cards);
         cpuCards = initializeCpuCards(allCards, cpuCards);
 
-        System.out.println("Welcome to CardJitsu... select one of the options below: ");
-        System.out.println("1: CardJitsu VS CPU");
-        System.out.println("2: CardJitsu VS Local Player");
-        System.out.println("3: Options");
-        System.out.println("4: Game Rules");
-        System.out.println("5: Tournament Mode");
+        while (menuSelection != 6){
 
-        int menuSelection = input.nextInt();
+            System.out.println("Welcome to CardJitsu... select one of the options below: ");
+            System.out.println("1: CardJitsu VS CPU");
+            System.out.println("2: CardJitsu VS Local Player");
+            System.out.println("3: Options");
+            System.out.println("4: Game Rules");
+            System.out.println("5: Tournament Mode");
+            System.out.println("6: Quit");
 
-        if (menuSelection == 1){
-            cardVsCpu(allCards, player1Cards, cpuCards);
-        }
-        if (menuSelection == 2){
-            pvp(allCards, player1Cards, player2Cards);
-        }
-        if (menuSelection == 3){
-            Options();
-        }
-        if (menuSelection == 4){
-            gameRules();
-        }
-        if (menuSelection == 5){
-            tourny(allCards, player1Cards, cpuCards);
-        }
+            menuSelection = input.nextInt();
 
-
+            if (menuSelection == 1){
+                cardVsCpu(allCards, player1Cards, cpuCards);
+            }
+            if (menuSelection == 2){
+                pvp(allCards, player1Cards, player2Cards);
+            }
+            if (menuSelection == 3){
+                Options();
+            }
+            if (menuSelection == 4){
+                gameRules();
+            }
+            if (menuSelection == 5){
+                tourny(allCards, player1Cards, cpuCards);
+            }
+            if (menuSelection == 6){
+                System.out.println("Thanks for playing <3");
+            }
+        }
     }
 
     public static ArrayList<CardJitsu> initializeP1Cards(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards){
