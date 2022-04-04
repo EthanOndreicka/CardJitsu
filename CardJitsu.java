@@ -46,6 +46,16 @@ public class CardJitsu {
     }
 
     public static void main(String[] args) {
+
+        ArrayList<CardJitsu> allCards = new ArrayList<CardJitsu>();
+        ArrayList<CardJitsu> player1Cards = new ArrayList<CardJitsu>();
+        ArrayList<CardJitsu> player2Cards = new ArrayList<CardJitsu>();
+        ArrayList<CardJitsu> cpuCards = new ArrayList<CardJitsu>();
+        allCards = initializeCards(allCards);
+        player1Cards = initializeP1Cards(allCards, player1Cards);
+        player2Cards = initializeP2Cards(allCards, player2Cards);
+        cpuCards = initializeCpuCards(allCards, cpuCards);
+
         System.out.println("Welcome to CardJitsu... select one of the options below: ");
         System.out.println("1: CardJitsu VS CPU");
         System.out.println("2: CardJitsu VS Local Player");
@@ -54,7 +64,7 @@ public class CardJitsu {
         int menuSelection = input.nextInt();
 
         if (menuSelection == 1){
-            cardVsCpu();
+            cardVsCpu(allCards, player1Cards, cpuCards);
         }
         if (menuSelection == 2){
             pvp();
@@ -69,8 +79,83 @@ public class CardJitsu {
 
     }
 
-    public static void cardVsCpu(){
-        // Fire 2 Cards
+    public static ArrayList<CardJitsu> initializeP1Cards(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards){
+
+        Random rand = new Random();
+
+        // trying to add random cards to player deck
+
+        int num1 = rand.nextInt(41);
+        int num2 = rand.nextInt(41);
+        int num3 = rand.nextInt(41);
+        int num4 = rand.nextInt(41); // change nums
+        
+        CardJitsu playerCard1 = allCards.get(num1);
+        CardJitsu playerCard2 = allCards.get(num2);
+        CardJitsu playerCard3 = allCards.get(num3);
+        CardJitsu playerCard4 = allCards.get(num4);
+
+        ArrayList<CardJitsu> userCards = new ArrayList<CardJitsu>();
+        userCards.add(playerCard1);
+        userCards.add(playerCard2);
+        userCards.add(playerCard3);
+        userCards.add(playerCard4);
+
+        return userCards;
+    }
+
+    public static ArrayList<CardJitsu> initializeP2Cards(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player2Cards){
+
+        Random rand = new Random();
+
+        // trying to add random cards to player deck
+
+        int num1 = rand.nextInt(41);
+        int num2 = rand.nextInt(41);
+        int num3 = rand.nextInt(41);
+        int num4 = rand.nextInt(41); // change nums
+        
+        CardJitsu playerCard1 = allCards.get(num1);
+        CardJitsu playerCard2 = allCards.get(num2);
+        CardJitsu playerCard3 = allCards.get(num3);
+        CardJitsu playerCard4 = allCards.get(num4);
+
+        ArrayList<CardJitsu> user2Cards = new ArrayList<CardJitsu>();
+        user2Cards.add(playerCard1);
+        user2Cards.add(playerCard2);
+        user2Cards.add(playerCard3);
+        user2Cards.add(playerCard4);
+
+        return user2Cards;
+    }
+
+    public static ArrayList<CardJitsu> initializeCpuCards(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> cpuCards){
+
+        Random rand = new Random();
+
+        // trying to add random cards to player deck
+
+        int num5 = rand.nextInt(41);
+        int num6 = rand.nextInt(41);
+        int num7 = rand.nextInt(41);
+        int num8 = rand.nextInt(41); // change nums
+        
+        CardJitsu cpuCard1 = allCards.get(num5);
+        CardJitsu cpuCard2 = allCards.get(num6);
+        CardJitsu cpuCard3 = allCards.get(num7);
+        CardJitsu cpuCard4 = allCards.get(num8);
+
+        ArrayList<CardJitsu> cpuCard = new ArrayList<CardJitsu>();
+        cpuCard.add(cpuCard1);
+        cpuCard.add(cpuCard2);
+        cpuCard.add(cpuCard3);
+        cpuCard.add(cpuCard4);
+
+        return cpuCard;
+    }
+
+    public static ArrayList<CardJitsu> initializeCards(ArrayList<CardJitsu> allCards){
+
         CardJitsu beanCounters = new CardJitsu("Bean Counters", "Fire", 2, 1, "Blue");
         CardJitsu camera = new CardJitsu("Camera", "Fire", 2, 1, "Orange");
         CardJitsu constructionWorker = new CardJitsu("Construction Worker", "Fire", 2, 1, "Yellow");
@@ -132,88 +217,55 @@ public class CardJitsu {
         CardJitsu sledRacing = new CardJitsu("* Sled Racing *", "Snow", 10, 3, "Green");
         CardJitsu ac3000 = new CardJitsu("* AC 3000 *", "Snow", 11, 3, "Purple");
 
-        ArrayList<CardJitsu> cardList = new ArrayList<CardJitsu>();
-        // 41 Cards
-        cardList.add(beanCounters);
-        cardList.add(camera);
-        cardList.add(constructionWorker);
-        cardList.add(baseball);
-        cardList.add(iceFishing);
-        cardList.add(summerParty);
-        cardList.add(bluePuffle);
-        cardList.add(skiHill);
-        cardList.add(snowForts);
-        cardList.add(cartSurfer);
-        cardList.add(herbertBear);
-        cardList.add(knight);
-        cardList.add(lifeRing);
-        cardList.add(waterBalloons);
-        cardList.add(undergroundFlood);
-        cardList.add(petShop);
-        cardList.add(secretAgent);
-        cardList.add(snowyNight);
-        cardList.add(scroll);
-        cardList.add(anvilSmith);
-        cardList.add(landingPad);
-        cardList.add(fishCostume);
-        cardList.add(grayFish);
-        cardList.add(iceCream);
-        cardList.add(stadium);
-        cardList.add(ticketBooth);
-        cardList.add(theFair);
-        cardList.add(hotSauce);
-        cardList.add(blast);
-        cardList.add(astroBarrier);
-        cardList.add(hydroHopper);
-        cardList.add(orangeSky);
-        cardList.add(shark);
-        cardList.add(whitePuffles);
-        cardList.add(christmasParty);
-        cardList.add(auntArctic);
-        cardList.add(dojoSketch);
-        cardList.add(jetPack);
-        cardList.add(ninja);
-        cardList.add(waterParty);
-        cardList.add(sledRacing);
-        cardList.add(ac3000);
-        
+        allCards.add(beanCounters);
+        allCards.add(camera);
+        allCards.add(constructionWorker);
+        allCards.add(baseball);
+        allCards.add(iceFishing);
+        allCards.add(summerParty);
+        allCards.add(bluePuffle);
+        allCards.add(skiHill);
+        allCards.add(snowForts);
+        allCards.add(cartSurfer);
+        allCards.add(herbertBear);
+        allCards.add(knight);
+        allCards.add(lifeRing);
+        allCards.add(waterBalloons);
+        allCards.add(undergroundFlood);
+        allCards.add(petShop);
+        allCards.add(secretAgent);
+        allCards.add(snowyNight);
+        allCards.add(scroll);
+        allCards.add(anvilSmith);
+        allCards.add(landingPad);
+        allCards.add(fishCostume);
+        allCards.add(grayFish);
+        allCards.add(iceCream);
+        allCards.add(stadium);
+        allCards.add(ticketBooth);
+        allCards.add(theFair);
+        allCards.add(hotSauce);
+        allCards.add(blast);
+        allCards.add(astroBarrier);
+        allCards.add(hydroHopper);
+        allCards.add(orangeSky);
+        allCards.add(shark);
+        allCards.add(whitePuffles);
+        allCards.add(christmasParty);
+        allCards.add(auntArctic);
+        allCards.add(dojoSketch);
+        allCards.add(jetPack);
+        allCards.add(ninja);
+        allCards.add(waterParty);
+        allCards.add(sledRacing);
+        allCards.add(ac3000);
+
+        return allCards;
+    }
+
+    public static boolean cardVsCpu(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards, ArrayList<CardJitsu> cpuCards){
 
         Random rand = new Random();
-
-        // trying to add random cards to player deck
-
-        int num1 = rand.nextInt(41);
-        int num2 = rand.nextInt(41);
-        int num3 = rand.nextInt(41);
-        int num4 = rand.nextInt(41); // change nums
-
-        int num5 = rand.nextInt(41);
-        int num6 = rand.nextInt(41);
-        int num7 = rand.nextInt(41);
-        int num8 = rand.nextInt(41);
-        
-        CardJitsu playerCard1 = cardList.get(num1);
-        CardJitsu playerCard2 = cardList.get(num2);
-        CardJitsu playerCard3 = cardList.get(num3);
-        CardJitsu playerCard4 = cardList.get(num4);
-
-        ArrayList<CardJitsu> userCards = new ArrayList<CardJitsu>();
-        userCards.add(playerCard1);
-        userCards.add(playerCard2);
-        userCards.add(playerCard3);
-        userCards.add(playerCard4);
-
-        CardJitsu cpuCard1 = cardList.get(num5);
-        CardJitsu cpuCard2 = cardList.get(num6);
-        CardJitsu cpuCard3 = cardList.get(num7);
-        CardJitsu cpuCard4 = cardList.get(num8);
-
-        ArrayList<CardJitsu> cpuCards = new ArrayList<CardJitsu>();
-        cpuCards.add(cpuCard1);
-        cpuCards.add(cpuCard2);
-        cpuCards.add(cpuCard3);
-        cpuCards.add(cpuCard4);
-
 
         int userWins = 0;
         int cpuWins = 0;
@@ -226,8 +278,8 @@ public class CardJitsu {
                 int cardNum = 0;
                 System.out.println("\nYour Cards: \n");
                 for (int q = 0; q < 4; q++){
-                    System.out.println("(" + (cardNum + 1) + ") " + userCards.get(cardNum).cardName + " || Type: " + userCards.get(cardNum).cardType 
-                    + " || Level: " + userCards.get(cardNum).cardLevel + " || Color: " + userCards.get(cardNum).cardColor + "\n");
+                    System.out.println("(" + (cardNum + 1) + ") " + player1Cards.get(cardNum).cardName + " || Type: " + player1Cards.get(cardNum).cardType 
+                    + " || Level: " + player1Cards.get(cardNum).cardLevel + " || Color: " + player1Cards.get(cardNum).cardColor + "\n");
                     cardNum++;
                 }
 
@@ -245,7 +297,7 @@ public class CardJitsu {
                 }
 
                 // used for testing and seeing cpu's cards
-                // System.out.println(userCards.get(cardSelection).getCardName());
+                // System.out.println(player1Cards.get(cardSelection).getCardName());
                 //  System.out.println(cpuCards.get(0).getCardName());
                 // System.out.println(cpuCards.get(1).getCardName());
                 // System.out.println(cpuCards.get(2).getCardName());
@@ -253,43 +305,43 @@ public class CardJitsu {
 
                 // prints user chosen card as well as cpu chosen card
                 System.out.println("==========================================\n");
-                System.out.println("Your Card: " + userCards.get(cardSelection).cardName + " || Type: " + userCards.get(cardSelection).cardType 
-                + " || Level: " + userCards.get(cardSelection).cardLevel + " || Color: " + userCards.get(cardSelection).cardColor + "\n");
+                System.out.println("Your Card: " + player1Cards.get(cardSelection).cardName + " || Type: " + player1Cards.get(cardSelection).cardType 
+                + " || Level: " + player1Cards.get(cardSelection).cardLevel + " || Color: " + player1Cards.get(cardSelection).cardColor + "\n");
                 System.out.println("CPU Card: " + cpuCards.get(cpuCardSelection).getCardName() + " || Type: " + cpuCards.get(cpuCardSelection).cardType 
                 + " || Level: " + cpuCards.get(cpuCardSelection).cardLevel + " || Color: " + cpuCards.get(cpuCardSelection).cardColor + "\n");
                 System.out.println("==========================================");
                 
                 // if else statements to determine each winner of round
-                if (userCards.get(cardSelection).getCardType() == "Fire" && cpuCards.get(cpuCardSelection).getCardType() == "Water"){
+                if (player1Cards.get(cardSelection).getCardType() == "Fire" && cpuCards.get(cpuCardSelection).getCardType() == "Water"){
                     System.out.println("You Lost this Round!, Water beats Fire...");
                     cpuWins++;
                 }
-                else if (userCards.get(cardSelection).getCardType() == "Water" && cpuCards.get(cpuCardSelection).getCardType() == "Snow"){
+                else if (player1Cards.get(cardSelection).getCardType() == "Water" && cpuCards.get(cpuCardSelection).getCardType() == "Snow"){
                     System.out.println("You Lost this Round!, Snow beats Water...");
                     cpuWins++;
                 }
-                else if (userCards.get(cardSelection).getCardType() == "Snow" && cpuCards.get(cpuCardSelection).getCardType() == "Fire"){
+                else if (player1Cards.get(cardSelection).getCardType() == "Snow" && cpuCards.get(cpuCardSelection).getCardType() == "Fire"){
                     System.out.println("You Lost this Round! Fire beats Snow...");
                     cpuWins++;
                 }
-                else if (cpuCards.get(cpuCardSelection).getCardType() == "Fire" && userCards.get(cardSelection).getCardType() == "Water"){
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Fire" && player1Cards.get(cardSelection).getCardType() == "Water"){
                     System.out.println("You Won this Round! Water beats Fire...");
                     userWins++;
                 }
-                else if (cpuCards.get(cpuCardSelection).getCardType() == "Water" && userCards.get(cardSelection).getCardType() == "Snow"){
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Water" && player1Cards.get(cardSelection).getCardType() == "Snow"){
                     System.out.println("You Won this Round! Snow beats Water...");
                     userWins++;
                 }
-                else if (cpuCards.get(cpuCardSelection).getCardType() == "Snow" && userCards.get(cardSelection).getCardType() == "Fire"){
+                else if (cpuCards.get(cpuCardSelection).getCardType() == "Snow" && player1Cards.get(cardSelection).getCardType() == "Fire"){
                     System.out.println("You Won this Round! Fire beats Snow...");
                     userWins++;
                 }
                 else{
-                    if(userCards.get(cardSelection).getCardLevel() > cpuCards.get(cpuCardSelection).getCardLevel()){
+                    if(player1Cards.get(cardSelection).getCardLevel() > cpuCards.get(cpuCardSelection).getCardLevel()){
                         System.out.println("You Won this Round! You had the higher level card!");
                         userWins++;
                     }
-                    else if(userCards.get(cardSelection).getCardLevel() == cpuCards.get(cpuCardSelection).getCardLevel()){
+                    else if(player1Cards.get(cardSelection).getCardLevel() == cpuCards.get(cpuCardSelection).getCardLevel()){
                         System.out.println("You Tied this Round! Your cards were the same type & level");
                     }
                     else{
@@ -301,8 +353,8 @@ public class CardJitsu {
                 }
 
                 // changes the card that was just used
-                userCards.set(cardSelection, cardList.get(rand.nextInt(41)));
-                cpuCards.set(cpuCardSelection, cardList.get(rand.nextInt(41)));
+                player1Cards.set(cardSelection, allCards.get(rand.nextInt(41)));
+                cpuCards.set(cpuCardSelection, allCards.get(rand.nextInt(41)));
 
             }
             // tells who wons and final score as well as +/- xp
@@ -377,6 +429,8 @@ public class CardJitsu {
         // don't allow card duplicates
         // add more cards
         // implement for loop to display all cards < Done
+
+        return true;
 
     }
 
