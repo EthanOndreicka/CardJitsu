@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.Random;
 
 public class CardJitsu {
@@ -10,6 +10,7 @@ public class CardJitsu {
     static int xp = 0;
     String cardName;
     String cardType;
+    static int numOfCards = 69;
     int cardLevel;
     // Fire = 1 // Water = 2 // Snow = 3
     int cardNumberType;
@@ -67,7 +68,7 @@ public class CardJitsu {
             cardVsCpu(allCards, player1Cards, cpuCards);
         }
         if (menuSelection == 2){
-            pvp();
+            pvp(allCards, player1Cards, player2Cards);
         }
         if (menuSelection == 3){
             Options();
@@ -85,10 +86,10 @@ public class CardJitsu {
 
         // trying to add random cards to player deck
 
-        int num1 = rand.nextInt(41);
-        int num2 = rand.nextInt(41);
-        int num3 = rand.nextInt(41);
-        int num4 = rand.nextInt(41); // change nums
+        int num1 = rand.nextInt(numOfCards);
+        int num2 = rand.nextInt(numOfCards);
+        int num3 = rand.nextInt(numOfCards);
+        int num4 = rand.nextInt(numOfCards); // change nums
         
         CardJitsu playerCard1 = allCards.get(num1);
         CardJitsu playerCard2 = allCards.get(num2);
@@ -110,10 +111,10 @@ public class CardJitsu {
 
         // trying to add random cards to player deck
 
-        int num1 = rand.nextInt(41);
-        int num2 = rand.nextInt(41);
-        int num3 = rand.nextInt(41);
-        int num4 = rand.nextInt(41); // change nums
+        int num1 = rand.nextInt(numOfCards);
+        int num2 = rand.nextInt(numOfCards);
+        int num3 = rand.nextInt(numOfCards);
+        int num4 = rand.nextInt(numOfCards); // change nums
         
         CardJitsu playerCard1 = allCards.get(num1);
         CardJitsu playerCard2 = allCards.get(num2);
@@ -135,10 +136,10 @@ public class CardJitsu {
 
         // trying to add random cards to player deck
 
-        int num5 = rand.nextInt(41);
-        int num6 = rand.nextInt(41);
-        int num7 = rand.nextInt(41);
-        int num8 = rand.nextInt(41); // change nums
+        int num5 = rand.nextInt(numOfCards);
+        int num6 = rand.nextInt(numOfCards);
+        int num7 = rand.nextInt(numOfCards);
+        int num8 = rand.nextInt(numOfCards); // change nums
         
         CardJitsu cpuCard1 = allCards.get(num5);
         CardJitsu cpuCard2 = allCards.get(num6);
@@ -156,6 +157,7 @@ public class CardJitsu {
 
     public static ArrayList<CardJitsu> initializeCards(ArrayList<CardJitsu> allCards){
 
+        // Fire 2 Cards
         CardJitsu beanCounters = new CardJitsu("Bean Counters", "Fire", 2, 1, "Blue");
         CardJitsu camera = new CardJitsu("Camera", "Fire", 2, 1, "Orange");
         CardJitsu constructionWorker = new CardJitsu("Construction Worker", "Fire", 2, 1, "Yellow");
@@ -194,6 +196,34 @@ public class CardJitsu {
         CardJitsu ticketBooth = new CardJitsu("Ticket Booth", "Snow", 4, 3, "Orange");
         CardJitsu theFair = new CardJitsu("The Fair", "Snow", 4, 3, "Orange");
         //----------------------------------------------------------------------------
+        // Fire 5 Cards
+        CardJitsu blackPuffle = new CardJitsu("Black Puffle", "Fire", 5, 1, "Red");
+        CardJitsu buoys = new CardJitsu("Buoys", "Fire", 5, 1, "Green");
+        CardJitsu yarr = new CardJitsu("Yarr", "Fire", 5, 1, "Green");
+
+        // Water 5 Cards
+        CardJitsu theDocks = new CardJitsu("The Docks", "Water", 5, 2, "Orange");
+        CardJitsu pop = new CardJitsu("Pop", "Water", 5, 2, "Purple");
+        CardJitsu fishBait = new CardJitsu("Fish Bait", "Water", 5, 2, "Purple");
+
+        // Snow 5 Cards
+        CardJitsu pinkPuffle = new CardJitsu("Pink Puffle", "Snow", 5, 3, "Blue");
+        CardJitsu musicJam = new CardJitsu("Music Jam", "Snow", 5, 3, "Purple");
+        CardJitsu hockeyGear = new CardJitsu("Hockey Gear", "Snow", 5, 3, "Purple");
+        //----------------------------------------------------------------------------
+        // Fire 6 Cards
+        CardJitsu gary = new CardJitsu("Gary", "Fire", 6, 1, "Blue");
+        CardJitsu petShopStaff = new CardJitsu("Pet Shop Staff", "Fire", 6, 1, "Yellow");
+        CardJitsu pizzaChef = new CardJitsu("Pizza Chef", "Fire", 6, 1, "Purple");
+        // Water 6 Cards
+        CardJitsu orangePuffle = new CardJitsu("Orange Puffle", "Water", 6, 2, "Blue");
+        CardJitsu franky = new CardJitsu("Franky", "Water", 6, 2, "Orange");
+        CardJitsu theMigrator = new CardJitsu("The Migrator", "Water", 6, 2, "Blue");
+        // Snow 6 Cards
+        CardJitsu hiddenPins = new CardJitsu("Hidden Pins", "Snow", 6, 3, "Green");
+        CardJitsu puffleShow = new CardJitsu("Puffle Show", "Snow", 6, 3, "Green");
+        CardJitsu clockTower = new CardJitsu("Clock Tower", "Snow", 6, 3, "Green");
+        //----------------------------------------------------------------------------
         // Fire 7 Cards
         CardJitsu hotSauce = new CardJitsu("Hot Sauce", "Fire", 7, 1, "Yellow");
         CardJitsu blast = new CardJitsu("Blast", "Fire", 7, 1, "Orange");
@@ -206,7 +236,20 @@ public class CardJitsu {
         CardJitsu whitePuffles = new CardJitsu("White Puffles", "Snow", 7, 3, "Yellow");
         CardJitsu christmasParty = new CardJitsu("Christmas Party", "Snow", 7, 3, "Green");
         CardJitsu auntArctic = new CardJitsu("Aunt Arctic", "Snow", 7, 3, "Green");
-
+        //----------------------------------------------------------------------------
+        // Fire 8 Cards
+        CardJitsu klutzy = new CardJitsu("Klutzy", "Fire", 8, 1, "Purple");
+        CardJitsu flare = new CardJitsu("Flare", "Fire", 8, 1, "Red");
+        CardJitsu gBilly = new CardJitsu("G Billy", "Fire", 8, 1, "Red");
+        // Water 8 Cards
+        CardJitsu giantSquid = new CardJitsu("Giant Squid", "Water", 8, 2, "Blue");
+        CardJitsu mullet = new CardJitsu("Mullet", "Water", 8, 2, "Purple");
+        CardJitsu iceberg = new CardJitsu("Iceberg", "Water", 8, 2, "Blue");
+        // Snow 8 Cards
+        CardJitsu dj3k = new CardJitsu("DJ3K", "Snow", 8, 3, "Green");
+        CardJitsu propellerCap = new CardJitsu("Propeller Cap", "Snow", 8, 3, "Green");
+        CardJitsu dojoCourtyard = new CardJitsu("Dojo Courtyard", "Snow", 8, 3, "Green");
+        //----------------------------------------------------------------------------
         // Fire Power Cards
         CardJitsu dojoSketch = new CardJitsu("* Dojo Sketch *", "Fire", 10, 1, "Yellow");
         CardJitsu jetPack = new CardJitsu("* Jet Pack *", "Fire", 10, 1, "Orange");
@@ -216,6 +259,8 @@ public class CardJitsu {
         // Snow Power Cards
         CardJitsu sledRacing = new CardJitsu("* Sled Racing *", "Snow", 10, 3, "Green");
         CardJitsu ac3000 = new CardJitsu("* AC 3000 *", "Snow", 11, 3, "Purple");
+        //-----------------------------------------------------------------------------
+        CardJitsu bair = new CardJitsu("Bairly Good Card", "Fire", 15, 1, "Blue");
 
         allCards.add(beanCounters);
         allCards.add(camera);
@@ -259,6 +304,34 @@ public class CardJitsu {
         allCards.add(waterParty);
         allCards.add(sledRacing);
         allCards.add(ac3000);
+        allCards.add(blackPuffle);
+        allCards.add(buoys);
+        allCards.add(yarr);
+        allCards.add(theDocks);
+        allCards.add(pop);
+        allCards.add(fishBait);
+        allCards.add(pinkPuffle);
+        allCards.add(musicJam);
+        allCards.add(hockeyGear);
+        allCards.add(gary);
+        allCards.add(petShopStaff);
+        allCards.add(pizzaChef);
+        allCards.add(orangePuffle);
+        allCards.add(franky);
+        allCards.add(theMigrator);
+        allCards.add(hiddenPins);
+        allCards.add(puffleShow);
+        allCards.add(clockTower);
+        allCards.add(klutzy);
+        allCards.add(flare);
+        allCards.add(gBilly);
+        allCards.add(giantSquid);
+        allCards.add(mullet);
+        allCards.add(iceberg);
+        allCards.add(dj3k);
+        allCards.add(propellerCap);
+        allCards.add(dojoCourtyard);
+        allCards.add(bair);
 
         return allCards;
     }
@@ -266,10 +339,13 @@ public class CardJitsu {
     public static boolean cardVsCpu(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards, ArrayList<CardJitsu> cpuCards){
 
         Random rand = new Random();
-
+        String[] cpuNames = {"Pepper", "Benji", "Maximus", "Winston", "Moo"};
+        String nameOfCpu = cpuNames[rand.nextInt(4)];
         int userWins = 0;
         int cpuWins = 0;
-        String[] colorCards;
+        int numOfWins = 0;
+        int numOfLosses = 0;
+        //String[] colorCards;
 
         boolean inBattle = true;
         while (inBattle){
@@ -307,7 +383,7 @@ public class CardJitsu {
                 System.out.println("==========================================\n");
                 System.out.println("Your Card: " + player1Cards.get(cardSelection).cardName + " || Type: " + player1Cards.get(cardSelection).cardType 
                 + " || Level: " + player1Cards.get(cardSelection).cardLevel + " || Color: " + player1Cards.get(cardSelection).cardColor + "\n");
-                System.out.println("CPU Card: " + cpuCards.get(cpuCardSelection).getCardName() + " || Type: " + cpuCards.get(cpuCardSelection).cardType 
+                System.out.println(nameOfCpu + "'s Card: " + cpuCards.get(cpuCardSelection).getCardName() + " || Type: " + cpuCards.get(cpuCardSelection).cardType 
                 + " || Level: " + cpuCards.get(cpuCardSelection).cardLevel + " || Color: " + cpuCards.get(cpuCardSelection).cardColor + "\n");
                 System.out.println("==========================================");
                 
@@ -345,7 +421,7 @@ public class CardJitsu {
                         System.out.println("You Tied this Round! Your cards were the same type & level");
                     }
                     else{
-                        System.out.println("You Lost this Round!, CPU had a higher level card");
+                        System.out.println("You Lost this Round!, " + nameOfCpu + " had a higher level card");
                         cpuWins++;
                     }
                     
@@ -353,20 +429,23 @@ public class CardJitsu {
                 }
 
                 // changes the card that was just used
-                player1Cards.set(cardSelection, allCards.get(rand.nextInt(41)));
-                cpuCards.set(cpuCardSelection, allCards.get(rand.nextInt(41)));
+                player1Cards.set(cardSelection, allCards.get(rand.nextInt(numOfCards)));
+                cpuCards.set(cpuCardSelection, allCards.get(rand.nextInt(numOfCards)));
 
             }
             // tells who wons and final score as well as +/- xp
             if (userWins > cpuWins){
                 System.out.println("You Won!");
+                numOfWins++;
                 xp += 100;
             }
             else{
                 System.out.println("You Lost!");
+                numOfLosses++;
                 xp -= 50;
             }
-            System.out.println("Final Score: User(" + userWins + ") - CPU(" + cpuWins + ")");
+            System.out.println("Final Score: User(" + userWins + ") - " + nameOfCpu + "(" + cpuWins + ")");
+            System.out.println("Your Record: " + numOfWins + " - " + numOfLosses);
 
             // belts 
             String userBelt;
@@ -441,9 +520,112 @@ public class CardJitsu {
         System.out.println("Fire beats Snow \n Snow beats Water \n Water beats Fire");
     }
 
-    public static void pvp(){
+    public static boolean pvp(ArrayList<CardJitsu> allCards, ArrayList<CardJitsu> player1Cards, ArrayList<CardJitsu> player2Cards){
+        Random rand = new Random();
+        boolean inBattle = true;
+        int player1Wins = 0;
+        int player2Wins = 0;
+            while (inBattle){
+                while (player1Wins < 3 && player2Wins < 3){
+                    int cardNum = 0;
+                    System.out.println("\nPlayer 1 Cards: \n");
+                    for (int q = 0; q < 4; q++){
+                        System.out.println("(" + (cardNum + 1) + ") " + player1Cards.get(cardNum).cardName + " || Type: " + player1Cards.get(cardNum).cardType 
+                        + " || Level: " + player1Cards.get(cardNum).cardLevel + " || Color: " + player1Cards.get(cardNum).cardColor + "\n");
+                        cardNum++;
+                    }
 
-        System.out.println("Work in Progress...");
+                    System.out.println("Score: " + player1Wins + " - " + player2Wins);
+                    System.out.println("Choose a card: ");
+                    int player1cardSelection = input.nextInt() - 1;
+                    System.out.println("\n\n\n-----------------\n\n\n\n\n\n\n\n\n");
+                    int numCard = 0;
+                    System.out.println("\nPlayer 2 Cards: \n");
+                    for (int q = 0; q < 4; q++){
+                        System.out.println("(" + (numCard+ 1) + ") " + player2Cards.get(numCard).cardName + " || Type: " + player2Cards.get(numCard).cardType 
+                        + " || Level: " + player2Cards.get(numCard).cardLevel + " || Color: " + player2Cards.get(numCard).cardColor + "\n");
+                        numCard++;
+                    }
+
+                    System.out.println("Score: " + player1Wins + " - " + player2Wins);
+                    System.out.println("Choose a card: ");
+                    int player2CardSelection = input.nextInt() - 1;
+
+                    System.out.println("==========================================\n");
+                    System.out.println("Your Card: " + player1Cards.get(player1cardSelection).cardName + " || Type: " + player1Cards.get(player1cardSelection).cardType 
+                    + " || Level: " + player1Cards.get(player1cardSelection).cardLevel + " || Color: " + player1Cards.get(player1cardSelection).cardColor + "\n");
+                    System.out.println("Player 2's Card: " + player2Cards.get(player2CardSelection).getCardName() + " || Type: " + player2Cards.get(player2CardSelection).cardType 
+                    + " || Level: " + player2Cards.get(player2CardSelection).cardLevel + " || Color: " + player2Cards.get(player2CardSelection).cardColor + "\n");
+                    System.out.println("==========================================");
+                    
+                    // if else statements to determine each winner of round
+                    if (player1Cards.get(player1cardSelection).getCardType() == "Fire" && player2Cards.get(player2CardSelection).getCardType() == "Water"){
+                        System.out.println("You Lost this Round!, Water beats Fire...");
+                        player2Wins++;
+                    }
+                    else if (player1Cards.get(player1cardSelection).getCardType() == "Water" && player2Cards.get(player2CardSelection).getCardType() == "Snow"){
+                        System.out.println("You Lost this Round!, Snow beats Water...");
+                        player2Wins++;
+                    }
+                    else if (player1Cards.get(player1cardSelection).getCardType() == "Snow" && player2Cards.get(player2CardSelection).getCardType() == "Fire"){
+                        System.out.println("You Lost this Round! Fire beats Snow...");
+                        player2Wins++;
+                    }
+                    else if (player2Cards.get(player2CardSelection).getCardType() == "Fire" && player1Cards.get(player1cardSelection).getCardType() == "Water"){
+                        System.out.println("You Won this Round! Water beats Fire...");
+                        player1Wins++;
+                    }
+                    else if (player2Cards.get(player2CardSelection).getCardType() == "Water" && player1Cards.get(player1cardSelection).getCardType() == "Snow"){
+                        System.out.println("You Won this Round! Snow beats Water...");
+                        player1Wins++;
+                    }
+                    else if (player2Cards.get(player2CardSelection).getCardType() == "Snow" && player1Cards.get(player1cardSelection).getCardType() == "Fire"){
+                        System.out.println("You Won this Round! Fire beats Snow...");
+                        player1Wins++;
+                    }
+                    else{
+                        if(player1Cards.get(player1cardSelection).getCardLevel() > player2Cards.get(player2CardSelection).getCardLevel()){
+                            System.out.println("You Won this Round! You had the higher level card!");
+                            player1Wins++;
+                        }
+                        else if(player1Cards.get(player1cardSelection).getCardLevel() == player2Cards.get(player2CardSelection).getCardLevel()){
+                            System.out.println("You Tied this Round! Your cards were the same type & level");
+                        }
+                        else{
+                            System.out.println("You Lost this Round!, Player 2 had a higher level card");
+                            player2Wins++;
+                        }
+                        
+    
+                    }
+
+                // might delete later... but to add a delay
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                }
+                catch(InterruptedException e){
+                    System.err.format("IOException: %s%n", e);
+                }
+                    
+
+                    // changes the card that was just used
+                    player1Cards.set(player1cardSelection, allCards.get(rand.nextInt(numOfCards)));
+                    player2Cards.set(player2CardSelection, allCards.get(rand.nextInt(numOfCards)));
+
+                }
+
+                // tells who wons and final score as well as +/- xp
+            if (player1Wins > player2Wins){
+                System.out.println("You Won!");
+                xp += 100;
+            }
+            else{
+                System.out.println("You Lost!");
+                xp -= 50;
+            }
+            System.out.println("Final Score: Player1(" + player1Wins + ") - Player2(" + player2Wins + ")");
+        }
+        return true;
     }
 
     public static void Options(){
